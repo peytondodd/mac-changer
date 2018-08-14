@@ -12,52 +12,47 @@
 import sys
 import os
 import time
+
+initializeANSI()
+{
+ esc=""
+
+  blackf="${esc}[30m";   redf="${esc}[31m";    greenf="${esc}[32m"
+  yellowf="${esc}[33m"   bluef="${esc}[34m";   purplef="${esc}[35m"
+  cyanf="${esc}[36m";    whitef="${esc}[37m"
+  
+  blackb="${esc}[40m";   redb="${esc}[41m";    greenb="${esc}[42m"
+  yellowb="${esc}[43m"   blueb="${esc}[44m";   purpleb="${esc}[45m"
+  cyanb="${esc}[46m";    whiteb="${esc}[47m"
+
+  boldon="${esc}[1m";    boldoff="${esc}[22m"
+  italicson="${esc}[3m"; italicsoff="${esc}[23m"
+  ulon="${esc}[4m";      uloff="${esc}[24m"
+  invon="${esc}[7m";     invoff="${esc}[27m"
+
+  reset="${esc}[0m"
+}
+
+# note in this first use that switching colors doesn't require a reset
+# first - the new color overrides the old one.
+
+
 print('''
-XX   MMMMMMMMMMMMMMMMss'''                          '''ssMMMMMMMMMMMMMMMM   XX
-XX   MMMMMMMMMMMMyy''                                    ''yyMMMMMMMMMMMM   XX
-XX   MMMMMMMMyy''                                            ''yyMMMMMMMM   XX
-XX   MMMMMy''                                                    ''yMMMMM   XX
-XX   MMMy'                                                          'yMMM   XX
-XX   Mh'                                                              'hM   XX
-XX   -                                                                  -   XX
-XX                                                                          XX
-XX   ::                                                                ::   XX
-XX   MMhh.        ..hhhhhh..                      ..hhhhhh..        .hhMM   XX
-XX   MMMMMh   ..hhMMMMMMMMMMhh.                .hhMMMMMMMMMMhh..   hMMMMM   XX
-XX   ---MMM .hMMMMdd:::dMMMMMMMhh..        ..hhMMMMMMMd:::ddMMMMh. MMM---   XX
-XX   MMMMMM MMmm''      'mmMMMMMMMMyy.  .yyMMMMMMMMmm'      ''mmMM MMMMMM   XX
-XX   ---mMM ''             'mmMMMMMMMM  MMMMMMMMmm'             '' MMm---   XX
-XX   yyyym'    .              'mMMMMm'  'mMMMMm'              .    'myyyy   XX
-XX   mm''    .y'     ..yyyyy..  ''''      ''''  ..yyyyy..     'y.    ''mm   XX
-XX           MN    .sMMMMMMMMMss.   .    .   .ssMMMMMMMMMs.    NM           XX
-XX           N`    MMMMMMMMMMMMMN   M    M   NMMMMMMMMMMMMM    `N           XX
-XX            +  .sMNNNNNMMMMMN+   `N    N`   +NMMMMMNNNNNMs.  +            XX
-XX              o+++     ++++Mo    M      M    oM++++     +++o              XX
-XX                                oo      oo                                XX
-XX           oM                 oo          oo                 Mo           XX
-XX         oMMo                M              M                oMMo         XX
-XX       +MMMM                 s              s                 MMMM+       XX
-XX      +MMMMM+            +++NNNN+        +NNNN+++            +MMMMM+      XX
-XX     +MMMMMMM+       ++NNMMMMMMMMN+    +NMMMMMMMMNN++       +MMMMMMM+     XX
-XX     MMMMMMMMMNN+++NNMMMMMMMMMMMMMMNNNNMMMMMMMMMMMMMMNN+++NNMMMMMMMMM     XX
-XX     yMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMy     XX
-XX   m  yMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMy  m   XX
-XX   MMm yMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMy mMM   XX
-XX   MMMm .yyMMMMMMMMMMMMMMMM     MMMMMMMMMM     MMMMMMMMMMMMMMMMyy. mMMM   XX
-XX   MMMMd   ''''hhhhh       odddo          obbbo        hhhh''''   dMMMM   XX
-XX   MMMMMd             'hMMMMMMMMMMddddddMMMMMMMMMMh'             dMMMMM   XX
-XX   MMMMMMd              'hMMMMMMMMMMMMMMMMMMMMMMh'              dMMMMMM   XX
-XX   MMMMMMM-               ''ddMMMMMMMMMMMMMMdd''               -MMMMMMM   XX
-XX   MMMMMMMM                   '::dddddddd::'                   MMMMMMMM   XX
-XX   MMMMMMMM-                                                  -MMMMMMMM   XX
-XX   MMMMMMMMM                                                  MMMMMMMMM   XX
-XX   MMMMMMMMMy                                                yMMMMMMMMM   XX
-XX   MMMMMMMMMMy.                                            .yMMMMMMMMMM   XX
-XX   MMMMMMMMMMMMy.                                        .yMMMMMMMMMMMM   XX
-XX   MMMMMMMMMMMMMMy.                                    .yMMMMMMMMMMMMMM   XX
-XX   MMMMMMMMMMMMMMMMs.                                .sMMMMMMMMMMMMMMMM   XX
-XX   MMMMMMMMMMMMMMMMMMss.           ....           .ssMMMMMMMMMMMMMMMMMM   XX
-XX   MMMMMMMMMMMMMMMMMMMMNo         oNNNNo         oNMMMMMMMMMMMMMMMMMMMM   XX
+clear 
+
+initializeANSI
+
+cat << EOF
+ ${boldon}${whitef}    ▄▄▄${reset}
+ ${boldon}${whitef} ▄█████▄▄ ${reset}
+ ${boldon}${whitef}███${cyanb}▀▀▀▀${blackb}▀${cyanb}▀${blackb}▀${cyanb}▀${reset}
+ ${boldon}${whitef}███${cyanb}▄   ${boldoff}${blackf}▀ ▀${reset}${cyanf}▀${reset}
+ ${boldon}${whitef} ▄${cyanb}  ${reset}${boldon}${whitef}█████▄ ${boldoff}${redf}█▄${reset}
+ ${boldoff}${redf}▀▀${reset}${boldon}${redb}${whitef}▄${cyanb}▄   ${redb}▄▄▄${reset}${boldoff}${redf}▀██▀${reset}
+ ${boldon}${whitef} ██▀▀▀██▀  ${boldoff}${redf}▀${reset}
+ ${boldon}${whitef} ▀▀▀▀ ▀▀▀▀${reset}
+ 
+EOF
 ''')
 def slowprint(s):
     for c in s + '\n' :
