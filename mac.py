@@ -12,7 +12,7 @@
 import sys
 import os
 import time
-
+print(''
 initializeANSI()
 {
  esc=""
